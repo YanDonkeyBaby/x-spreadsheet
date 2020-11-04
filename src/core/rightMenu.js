@@ -18,7 +18,7 @@ class RightMenus {
   }
 
   getData() {
-    return this._.map(it => it.toString());
+    return this._.map(it => it);
   }
 
   setData(d) {
