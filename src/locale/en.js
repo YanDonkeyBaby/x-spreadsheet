@@ -135,13 +135,14 @@ export default {
     },
   },
   rightMenu: {
-    headers: 'IsHeaders',
+    headers: 'is headers',
     headersType: {
       true: 'true',
       false: 'false',
     },
-    datasource: 'DataSource',
-    tablename: 'TableName',
-    fieldname: 'FieldName',
+    zbbm: 'index code',
+    datasource: 'datasource',
+    tablename: 'tablename',
+    fieldname: 'fieldname',
   },
 };

@@ -21,6 +21,13 @@ export default class ModalRightMenu extends Modal {
       `${t('rightMenu.headers')}:`,
       fieldLabelWidth,
     );
+    // 指标编码
+    const zbbm = new FormField(
+      new FormInput('150px', ''),
+      { required: false },
+      `${t('rightMenu.zbbm')}:`,
+      fieldLabelWidth,
+    );
     // 数据源
     const datasource = new FormField(
       new FormInput('150px', ''),
@@ -49,6 +56,9 @@ export default class ModalRightMenu extends Modal {
         headers.el,
       ),
       h('div', `${cssPrefix}-form-fields`).children(
+        zbbm.el,
+      ),
+      h('div', `${cssPrefix}-form-fields`).children(
         datasource.el,
       ),
       h('div', `${cssPrefix}-form-fields`).children(
@@ -63,6 +73,7 @@ export default class ModalRightMenu extends Modal {
       ),
     ]);
     this.headers = headers;
+    this.zbbm = zbbm;
     this.datasource = datasource;
     this.tablename = tablename;
     this.fieldname = fieldname;
@@ -74,12 +85,13 @@ export default class ModalRightMenu extends Modal {
       this.hide();
     } else if (action === 'save') {
       const headers = this.headers.val();
+      const zbbm = this.zbbm.val();
       const datasource = this.datasource.val();
       const tablename = this.tablename.val();
       const fieldname = this.fieldname.val();
       this.change('save',
         {
-          headers, datasource, tablename: tablename, fieldname: fieldname,
+          headers, zbbm, datasource, tablename, fieldname,
         });
       this.hide();
     }
@@ -89,9 +101,10 @@ export default class ModalRightMenu extends Modal {
   setValue(v) {
     if (v) {
       const {
-        headers, datasource, tablename, fieldname,
+        headers, zbbm, datasource, tablename, fieldname,
       } = this;
       headers.val(v.headers || 'false');
+      zbbm.val(v.zbbm || '');
       datasource.val(v.datasource || '');
       tablename.val(v.tablename || '');
       fieldname.val(v.fieldname || '');

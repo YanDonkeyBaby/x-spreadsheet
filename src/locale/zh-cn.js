@@ -139,6 +139,7 @@ export default {
         tr: 'true',
         fa: 'false',
       },
+      zbbm: '指标编码',
       datasource: '数据源',
       tablename: '数据表',
       fieldname: '指标字段名',
