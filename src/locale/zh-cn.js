@@ -31,6 +31,7 @@ export default {
     pasteValue: '粘贴数据',
     pasteFormat: '粘贴格式',
     hide: '隐藏',
+    rightMenu: '右键菜单',
     insertRow: '插入行',
     insertColumn: '插入列',
     deleteSheet: '删除',
@@ -131,6 +132,16 @@ export default {
       gte: '大于等于',
       eq: '等于',
       neq: '不等于',
+    },
+    rightMenu: {
+      headers: '是否表头',
+      headersType: {
+        tr: 'true',
+        fa: 'false',
+      },
+      datasource: '数据源',
+      tablename: '数据表',
+      fieldname: '指标字段名',
     },
   },
 };

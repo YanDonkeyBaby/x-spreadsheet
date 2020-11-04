@@ -10,6 +10,7 @@ import helper from './helper';
 import { Rows } from './row';
 import { Cols } from './col';
 import { Validations } from './validation';
+import { RightMenus } from './rightMenu';
 import { CellRange } from './cell_range';
 import { expr2xy, xy2expr } from './alphabet';
 import { t } from '../locale/locale';
@@ -333,6 +334,7 @@ export default class DataProxy {
     this.rows = new Rows(this.settings.row);
     this.cols = new Cols(this.settings.col);
     this.validations = new Validations();
+    this.rightMenus = new RightMenus();
     this.hyperlinks = {};
     this.comments = {};
     // save data end
@@ -361,6 +363,31 @@ export default class DataProxy {
     this.changeData(() => {
       this.validations.remove(range);
     });
+  }
+
+  addRightmenu(...args) {
+    this.changeData(() => {
+      const { ri, ci } = this.selector;
+      const values = Object.assign({ ri, ci }, ...args);
+      let isCz = false;
+      for (let i = 0; i < this.rightMenus._.length; i++) {
+        const rec = this.rightMenus._[i];
+        if (rec.ri === ri && rec.ci === ci) {
+          this.rightMenus._.splice(i, 1, values);
+          isCz = true;
+        }
+      }
+      if (!isCz) {
+        this.rightMenus.add(values);
+      }
+    });
+  }
+
+  getSelectedRightMenu() {
+    const { ri, ci } = this.selector;
+    const v = this.rightMenus.get(ri, ci);
+    const ret = Object.assign({}, v);
+    return ret;
   }
 
   getSelectedValidator() {
@@ -1151,7 +1178,7 @@ export default class DataProxy {
 
   getData() {
     const {
-      name, freeze, styles, merges, rows, cols, validations, autoFilter,
+      name, freeze, styles, merges, rows, cols, validations, autoFilter, rightMenus,
     } = this;
     return {
       name,
@@ -1162,6 +1189,7 @@ export default class DataProxy {
       cols: cols.getData(),
       validations: validations.getData(),
       autofilter: autoFilter.getData(),
+      rightMenus: rightMenus.getData(),
     };
   }
 }

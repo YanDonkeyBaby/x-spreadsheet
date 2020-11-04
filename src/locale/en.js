@@ -31,6 +31,7 @@ export default {
     pasteValue: 'Paste values only',
     pasteFormat: 'Paste format only',
     hide: 'Hide',
+    rightMenu: 'Right Menu',
     insertRow: 'Insert row',
     insertColumn: 'Insert column',
     deleteSheet: 'Delete',
@@ -132,5 +133,15 @@ export default {
       eq: 'equal to',
       neq: 'not equal to',
     },
+  },
+  rightMenu: {
+    headers: 'IsHeaders',
+    headersType: {
+      true: 'true',
+      false: 'false',
+    },
+    datasource: 'DataSource',
+    tablename: 'TableName',
+    fieldname: 'FieldName',
   },
 };

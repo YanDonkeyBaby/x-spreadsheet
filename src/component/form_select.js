@@ -14,7 +14,7 @@ export default class FormSelect {
       this.vchange(it.key);
     }, width, this.el);
     this.el.children(
-      this.itemEl = h('div', 'input-text').html(this.getTitle(key)),
+      this.itemEl = h('div', 'input-text').html(this.getTitle(key)).css('width', width),
       this.suggest.el,
     ).on('click', () => this.show());
   }

@@ -11,6 +11,7 @@ import Table from './table';
 import Toolbar from './toolbar/index';
 import ModalValidation from './modal_validation';
 import SortFilter from './sort_filter';
+import ModalRightMenu from './right_menu';
 import { xtoast } from './message';
 import { cssPrefix } from '../config';
 import { formulas } from '../core/formula';
@@ -577,6 +578,7 @@ function sheetInitEvents() {
     toolbar,
     modalValidation,
     sortFilter,
+    modalRightMenu,
   } = this;
   // overlayer
   overlayerEl
@@ -662,6 +664,12 @@ function sheetInitEvents() {
       this.data.removeValidation();
     }
   };
+  // right menu
+  modalRightMenu.change = (action, ...args) => {
+    if (action === 'save') {
+      this.data.addRightmenu(...args);
+    }
+  };
   // contextmenu
   contextMenu.itemClick = (type) => {
     // console.log('type:', type);
@@ -679,6 +687,8 @@ function sheetInitEvents() {
       paste.call(this, 'format');
     } else if (type === 'hide') {
       hideRowsOrCols.call(this);
+    } else if (type === 'right-menu') {
+      modalRightMenu.setValue(this.data.getSelectedRightMenu());
     } else {
       insertDeleteRowColumn.call(this, type);
     }
@@ -871,6 +881,8 @@ export default class Sheet {
     );
     // data validation
     this.modalValidation = new ModalValidation();
+    // right menu
+    this.modalRightMenu = new ModalRightMenu();
     // contextMenu
     this.contextMenu = new ContextMenu(() => this.getRect(), !showContextmenu);
     // selector
@@ -895,6 +907,7 @@ export default class Sheet {
       this.contextMenu.el,
       this.modalValidation.el,
       this.sortFilter.el,
+      this.modalRightMenu.el,
     );
     // table
     this.table = new Table(this.tableEl.el, data);
