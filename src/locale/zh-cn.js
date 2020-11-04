@@ -137,8 +137,8 @@ export default {
   rightMenu: {
     headers: '是否表头',
     headersType: {
-      true: 'true',
-      false: 'false',
+      true: '是',
+      false: '否',
     },
     zbbm: '指标编码',
     datasource: '数据源',
