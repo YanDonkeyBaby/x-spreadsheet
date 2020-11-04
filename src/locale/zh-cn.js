@@ -31,7 +31,6 @@ export default {
     pasteValue: '粘贴数据',
     pasteFormat: '粘贴格式',
     hide: '隐藏',
-    rightMenu: '右键菜单',
     insertRow: '插入行',
     insertColumn: '插入列',
     deleteSheet: '删除',
@@ -44,6 +43,7 @@ export default {
     cellnonprintable: '不可打印',
     celleditable: '可编辑',
     cellnoneditable: '不可编辑',
+    rightMenu: '单元格属性',
   },
   print: {
     size: '纸张大小',
@@ -133,16 +133,16 @@ export default {
       eq: '等于',
       neq: '不等于',
     },
-    rightMenu: {
-      headers: '是否表头',
-      headersType: {
-        tr: 'true',
-        fa: 'false',
-      },
-      zbbm: '指标编码',
-      datasource: '数据源',
-      tablename: '数据表',
-      fieldname: '指标字段名',
+  },
+  rightMenu: {
+    headers: '是否表头',
+    headersType: {
+      true: 'true',
+      false: 'false',
     },
+    zbbm: '指标编码',
+    datasource: '数据源',
+    tablename: '数据表',
+    fieldname: '指标字段名',
   },
 };

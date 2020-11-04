@@ -31,7 +31,6 @@ export default {
     pasteValue: 'Paste values only',
     pasteFormat: 'Paste format only',
     hide: 'Hide',
-    rightMenu: 'Right Menu',
     insertRow: 'Insert row',
     insertColumn: 'Insert column',
     deleteSheet: 'Delete',
@@ -44,6 +43,7 @@ export default {
     cellnonprintable: 'Disable export',
     celleditable: 'Enable editing',
     cellnoneditable: 'Disable editing',
+    rightMenu: 'Cell properties',
   },
   print: {
     size: 'Paper size',
