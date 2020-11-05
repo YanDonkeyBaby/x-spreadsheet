@@ -22,7 +22,7 @@ class RightMenus {
   }
 
   setData(d) {
-    this._ = d.map(it => CellRange.valueOf(it));
+    this._ = d.map(it => it);
   }
 }
 

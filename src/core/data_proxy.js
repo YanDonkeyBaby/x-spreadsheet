@@ -1162,7 +1162,8 @@ export default class DataProxy {
   setData(d) {
     Object.keys(d).forEach((property) => {
       if (property === 'merges' || property === 'rows'
-        || property === 'cols' || property === 'validations') {
+        || property === 'cols' || property === 'validations'
+          || property === 'rightMenus') {
         this[property].setData(d[property]);
       } else if (property === 'freeze') {
         const [x, y] = expr2xy(d[property]);
