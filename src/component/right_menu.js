@@ -36,7 +36,7 @@ export default class ModalRightMenu extends Modal {
       fieldLabelWidth,
     );
     // 表
-    const tablename = new FormField(
+    const table = new FormField(
       new FormInput('150px', ''),
       { required: false },
       `${t('rightMenu.tablename')}:`,
@@ -44,7 +44,7 @@ export default class ModalRightMenu extends Modal {
     );
 
     // 字段
-    const fieldname = new FormField(
+    const field = new FormField(
       new FormInput('150px', ''),
       { required: false },
       `${t('rightMenu.fieldname')}:`,
@@ -62,10 +62,10 @@ export default class ModalRightMenu extends Modal {
         datasource.el,
       ),
       h('div', `${cssPrefix}-form-fields`).children(
-        tablename.el,
+        table.el,
       ),
       h('div', `${cssPrefix}-form-fields`).children(
-        fieldname.el,
+        field.el,
       ),
       h('div', `${cssPrefix}-buttons`).children(
         new Button('cancel').on('click', () => this.btnClick('cancel')),
@@ -75,8 +75,8 @@ export default class ModalRightMenu extends Modal {
     this.headers = headers;
     this.zbbm = zbbm;
     this.datasource = datasource;
-    this.tablename = tablename;
-    this.fieldname = fieldname;
+    this.table = table;
+    this.field = field;
     this.change = () => {};
   }
 
@@ -87,11 +87,11 @@ export default class ModalRightMenu extends Modal {
       const headers = this.headers.val();
       const zbbm = this.zbbm.val();
       const datasource = this.datasource.val();
-      const tablename = this.tablename.val();
-      const fieldname = this.fieldname.val();
+      const table = this.table.val();
+      const field = this.field.val();
       this.change('save',
         {
-          headers, zbbm, datasource, tablename, fieldname,
+          headers, zbbm, datasource, table, field,
         });
       this.hide();
     }
@@ -101,13 +101,13 @@ export default class ModalRightMenu extends Modal {
   setValue(v) {
     if (v) {
       const {
-        headers, zbbm, datasource, tablename, fieldname,
+        headers, zbbm, datasource, table, field,
       } = this;
       headers.val(v.headers || 'false');
       zbbm.val(v.zbbm || '');
       datasource.val(v.datasource || '');
-      tablename.val(v.tablename || '');
-      fieldname.val(v.fieldname || '');
+      table.val(v.table || '');
+      field.val(v.field || '');
     }
 
     this.show();
