@@ -266,7 +266,7 @@ export default class Editor {
         }
       }
       if (type === 'list') {
-        suggest.setItems(validator.values());
+        suggest.setItems(validator.valuesName());
         suggest.search('');
       }
     }

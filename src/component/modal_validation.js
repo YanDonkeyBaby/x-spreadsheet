@@ -14,7 +14,7 @@ export default class ModalValidation extends Modal {
     const mf = new FormField(
       new FormSelect('cell',
         ['cell'], // cell|row|column
-        '100%',
+        '70px',
         it => t(`dataValidation.modeType.${it}`)),
       { required: true },
       `${t('dataValidation.range')}:`,
@@ -27,7 +27,7 @@ export default class ModalValidation extends Modal {
     const cf = new FormField(
       new FormSelect('list',
         ['list', 'number', 'date', 'phone', 'email'],
-        '100%',
+        '70px',
         it => t(`dataValidation.type.${it}`),
         it => this.criteriaSelected(it)),
       { required: true },
@@ -39,23 +39,23 @@ export default class ModalValidation extends Modal {
     const of = new FormField(
       new FormSelect('be',
         ['be', 'nbe', 'eq', 'neq', 'lt', 'lte', 'gt', 'gte'],
-        '160px',
+        '120px',
         it => t(`dataValidation.operator.${it}`),
         it => this.criteriaOperatorSelected(it)),
       { required: true },
     ).hide();
     // min, max
     const minvf = new FormField(
-      new FormInput('70px', '10'),
+      new FormInput('70px', '101'),
       { required: true },
     ).hide();
     const maxvf = new FormField(
-      new FormInput('70px', '100'),
+      new FormInput('70px', '1001'),
       { required: true, type: 'number' },
     ).hide();
     // value
     const svf = new FormField(
-      new FormInput('120px', 'a,b,c'),
+      new FormInput('120px', 'aid:a,bid:b,cid:c'),
       { required: true },
     );
     const vf = new FormField(
@@ -219,8 +219,8 @@ export default class ModalValidation extends Modal {
         svf.val(value || '');
         vf.val(value || '');
       }
-      this.criteriaSelected(type);
       this.criteriaOperatorSelected(operator);
+      this.criteriaSelected(type);
     }
     this.show();
   }

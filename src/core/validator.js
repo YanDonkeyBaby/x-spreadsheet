@@ -54,6 +54,20 @@ export default class Validator {
     return this.value.split(',');
   }
 
+  valuesName() {
+    const content = this.value.split(',');
+    const result = [];
+    for (let i = 0; i < content.length; i++) {
+      const content_ = content[i].split(':');
+      if (content_.length > 0) {
+        result.push(content_[1]);
+      } else {
+        result.push(content_[0]);
+      }
+    }
+    return result;
+  }
+
   validate(v) {
     const {
       required, operator, value, type,
@@ -66,7 +80,7 @@ export default class Validator {
       return returnMessage(false, 'notMatch');
     }
     if (type === 'list') {
-      return returnMessage(this.values().includes(v), 'notIn');
+      return returnMessage(this.valuesName().includes(v), 'notIn');
     }
     if (operator) {
       const v1 = this.parseValue(v);
