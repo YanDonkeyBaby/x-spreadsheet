@@ -107,6 +107,23 @@ class Rows {
   setCellText(ri, ci, text) {
     const cell = this.getCellOrNew(ri, ci);
     cell.text = text;
+    if (cell.type === 'list') {
+      const value = cell.values.toString();
+      const values = value.split(',');
+      for (let i = 0; i < values.length; i++) {
+        const values_ = values[i].split(':');
+        if (values_[1] === text) {
+          cell.value = values_[0];
+          break;
+        }
+      }
+    }
+  }
+
+  setListCell(ri, ci, validator) {
+    const cell = this.getCellOrNew(ri, ci);
+    cell.values = validator.value;
+    cell.type = 'list';
   }
 
   // what: all | format | text
@@ -299,6 +316,8 @@ class Rows {
         } else if (what === 'text') {
           if (cell.text) delete cell.text;
           if (cell.value) delete cell.value;
+          if (cell.values) delete cell.values;
+          if (cell.type) delete cell.type;
         } else if (what === 'format') {
           if (cell.style !== undefined) delete cell.style;
           if (cell.merge) delete cell.merge;

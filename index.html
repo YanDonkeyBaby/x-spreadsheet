@@ -67,6 +67,36 @@
           merges: [
             'C3:D4',
           ],
+          rightMenus: [
+            {
+              ci: 1,
+              datasource: "1",
+              field: "2",
+              headers: "true",
+              ri: 0,
+              table: "3",
+              zbbm: "4",
+            },
+            {
+              ci: 2,
+              datasource: "11",
+              field: "22",
+              headers: "true",
+              ri: 3,
+              table: "33",
+              zbbm: "44",
+            },
+          ],
+          /*validations: [
+            {
+              mode: "cell",
+              operator: "be",
+              refs: ["A4"],
+              required: false,
+              type: "list",
+              value: "1:11,2:22,3:33"
+            }
+          ],*/
           cols: {
             len: 10,
             2: { width: 200 },
@@ -83,12 +113,12 @@
           console.log('text:', text, ', ri: ', ri, ', ci:', ci);
         });
 
-      setTimeout(() => {
+     /* setTimeout(() => {
         // xs.loadData([{ rows }]);
         xs.cellText(14, 3, 'cell-text').reRender();
         console.log('cell(8, 8):', xs.cell(8, 8));
         console.log('cellStyle(8, 8):', xs.cellStyle(8, 8));
-      }, 5000);
+      }, 5000);*/
     }
   </script>
   <!--script type="text/javascript" src="https://unpkg.com/x-data-spreadsheet@1.0.20/dist/locale/zh-cn.js"></script-->
