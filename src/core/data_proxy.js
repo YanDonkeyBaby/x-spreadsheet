@@ -853,11 +853,11 @@ export default class DataProxy {
       let size = rsize;
       if (type === 'row') {
         rows.delete(sri, eri);
-        // validations.remove(selector.range);
-        rightMenus.delete(sri);
+        // validations.delete(sri);
+        rightMenus.delete(sri,eri);
       } else if (type === 'column') {
         rows.deleteColumn(sci, eci);
-        rightMenus.deleteColumn(sci);
+        rightMenus.deleteColumn(sci, eci);
         si = range.sci;
         size = csize;
         cols.len -= 1;
