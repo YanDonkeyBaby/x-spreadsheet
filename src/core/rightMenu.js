@@ -63,12 +63,6 @@ class RightMenus {
     this._ = ndata;
   }
 
-  each(cb) {
-    Object.entries(this._).forEach(([ri, rightMenu]) => {
-      cb(ri, rightMenu);
-    });
-  }
-
   get(ri, ci) {
     for (let i = 0; i < this._.length; i += 1) {
       const v = this._[i];
