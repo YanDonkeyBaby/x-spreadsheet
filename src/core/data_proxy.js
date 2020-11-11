@@ -355,6 +355,8 @@ export default class DataProxy {
     // console.log('mode:', mode, ', ref:', ref, ', validator:', validator);
     this.changeData(() => {
       this.validations.add(mode, ref, validator);
+      const { ri, ci } = this.selector;
+      this.rows.setListCell(ri, ci, validator);
     });
   }
 
@@ -817,12 +819,14 @@ export default class DataProxy {
   insert(type, n = 1) {
     this.changeData(() => {
       const { sri, sci } = this.selector.range;
-      const { rows, merges, cols } = this;
+      const { rows, merges, cols, validations, rightMenus,} = this;
       let si = sri;
       if (type === 'row') {
         rows.insert(sri, n);
+        rightMenus.insert(sri);
       } else if (type === 'column') {
         rows.insertColumn(sci, n);
+        rightMenus.insertColumn(sci);
         si = sci;
         cols.len += 1;
       }
@@ -838,7 +842,7 @@ export default class DataProxy {
   delete(type) {
     this.changeData(() => {
       const {
-        rows, merges, selector, cols,
+        rows, merges, selector, cols, validations, rightMenus,
       } = this;
       const { range } = selector;
       const {
@@ -849,8 +853,11 @@ export default class DataProxy {
       let size = rsize;
       if (type === 'row') {
         rows.delete(sri, eri);
+        // validations.remove(selector.range);
+        rightMenus.delete(sri);
       } else if (type === 'column') {
         rows.deleteColumn(sci, eci);
+        rightMenus.deleteColumn(sci);
         si = range.sci;
         size = csize;
         cols.len -= 1;
