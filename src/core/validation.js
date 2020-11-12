@@ -120,6 +120,113 @@ class Validations {
     });
   }
 
+  insert(sri) {
+    const ndata = [];
+    for (let i = 0; i < this._.length; i += 1) {
+      const v = this._[i];
+      if (v && v.refs && v.refs[0]) {
+        const ri = parseInt(v.refs[0].substring(1, 2), 10) - 1;
+        if (ri < sri) {
+          ndata.push(v);
+        } else if (ri >= sri) {
+          v.refs[0] = v.refs[0].substring(0, 1) + parseInt((ri + 2), 10);
+          ndata.push(v);
+        }
+      }
+    }
+    this._ = ndata;
+  }
+
+  insertColumn(sci) {
+    const ndata = [];
+    for (let i = 0; i < this._.length; i += 1) {
+      const v = this._[i];
+      if (v && v.refs && v.refs[0]) {
+        const len = v.refs[0].length;
+        const ci = this.stringToCode(v.refs[0]);
+        if (ci < sci) {
+          ndata.push(v);
+        } else if (ci >= sci) {
+          const str = this.codeToString(ci + 1);
+          v.refs[0] = str + v.refs[0].substring(len - 1, len);
+          ndata.push(v);
+        }
+      }
+    }
+    this._ = ndata;
+  }
+
+  delete(sri, eri) {
+    const n = eri - sri + 1;
+    const ndata = [];
+    for (let i = 0; i < this._.length; i += 1) {
+      const v = this._[i];
+      if (v && v.refs && v.refs[0]) {
+        const ri = parseInt(v.refs[0].substring(1, 2), 10) - 1;
+        if (ri < sri) {
+          ndata.push(v);
+        } else if (ri > eri) {
+          v.refs[0] = v.refs[0].substring(0, 1) + parseInt((ri - n + 1), 10);
+          ndata.push(v);
+        }
+      }
+    }
+    this._ = ndata;
+  }
+
+  deleteColumn(sci, eci) {
+    const n = eci - sci + 1;
+    const ndata = [];
+    for (let i = 0; i < this._.length; i += 1) {
+      const v = this._[i];
+      if (v && v.refs && v.refs[0]) {
+        const len = v.refs[0].length;
+        const ci = this.stringToCode(v.refs[0]);
+        if (ci < sci) {
+          ndata.push(v);
+        } else if (ci > eci) {
+          const str = this.codeToString(ci - n);
+          v.refs[0] = str + v.refs[0].substring(len - 1, len);
+          ndata.push(v);
+        }
+      }
+    }
+    this._ = ndata;
+  }
+
+  stringToCode(str) {
+    let num = 0;
+    const str2 = str.split('');
+    const len = str2.length;
+    for (const [i, s] of str2.entries()) {
+      if (len === 3) {
+        if (i === 0) {
+          num += (s.charCodeAt(0) - 64) * 26;
+        } else if (i === 1) {
+          num += s.charCodeAt(0) - 65;
+        }
+      } else if (len === 2) {
+        if (i === 0) {
+          num += s.charCodeAt(0) - 65;
+        }
+      }
+    }
+    return num;
+  }
+
+  codeToString(num) {
+    let str = '';
+    const num1 = Math.floor(num / 26);
+    const num2 = num % 26;
+    if (num1 > 0 && num1 < 26) {
+      str += String.fromCharCode(num1 + 64);
+    }
+    if (num2 >= 0 && num2 < 26) {
+      str += String.fromCharCode(num2 + 65);
+    }
+    return str;
+  }
+
   each(cb) {
     this._.forEach(it => cb(it));
   }

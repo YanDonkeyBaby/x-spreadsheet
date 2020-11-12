@@ -823,9 +823,11 @@ export default class DataProxy {
       let si = sri;
       if (type === 'row') {
         rows.insert(sri, n);
+        validations.insert(sri);
         rightMenus.insert(sri);
       } else if (type === 'column') {
         rows.insertColumn(sci, n);
+        validations.insertColumn(sci);
         rightMenus.insertColumn(sci);
         si = sci;
         cols.len += 1;
@@ -853,10 +855,11 @@ export default class DataProxy {
       let size = rsize;
       if (type === 'row') {
         rows.delete(sri, eri);
-        // validations.delete(sri);
-        rightMenus.delete(sri,eri);
+        validations.delete(sri, eri);
+        rightMenus.delete(sri, eri);
       } else if (type === 'column') {
         rows.deleteColumn(sci, eci);
+        validations.deleteColumn(sci, eci);
         rightMenus.deleteColumn(sci, eci);
         si = range.sci;
         size = csize;

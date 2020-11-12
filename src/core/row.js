@@ -316,8 +316,8 @@ class Rows {
         } else if (what === 'text') {
           if (cell.text) delete cell.text;
           if (cell.value) delete cell.value;
-          if (cell.values) delete cell.values;
-          if (cell.type) delete cell.type;
+          // if (cell.values) delete cell.values;
+          // if (cell.type) delete cell.type;
         } else if (what === 'format') {
           if (cell.style !== undefined) delete cell.style;
           if (cell.merge) delete cell.merge;
