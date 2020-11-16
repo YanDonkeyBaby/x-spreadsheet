@@ -354,15 +354,13 @@ export default class DataProxy {
   addValidation(mode, ref, validator) {
     // console.log('mode:', mode, ', ref:', ref, ', validator:', validator);
     this.changeData(() => {
-      for (let i = 0; i < this.validations._.length; i++) {
-        const rec = this.validations._[i];
-        if (rec.refs[0] === ref) {
-          const { range } = this.selector;
-          this.validations.remove(range);
-        }
+      const { ri, ci } = this.selector;
+      const isCz = this.validations.get(ri, ci);
+      if (isCz) {
+        const { range } = this.selector;
+        this.validations.remove(range);
       }
       this.validations.add(mode, ref, validator);
-      const { ri, ci } = this.selector;
       this.rows.setListCell(ri, ci, validator);
     });
   }
@@ -826,7 +824,9 @@ export default class DataProxy {
   insert(type, n = 1) {
     this.changeData(() => {
       const { sri, sci } = this.selector.range;
-      const { rows, merges, cols, validations, rightMenus,} = this;
+      const {
+        rows, merges, cols, validations, rightMenus,
+      } = this;
       let si = sri;
       if (type === 'row') {
         rows.insert(sri, n);
