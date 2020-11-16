@@ -112,7 +112,11 @@ class Rows {
       const values = value.split(',');
       for (let i = 0; i < values.length; i++) {
         const values_ = values[i].split(':');
-        if (values_[1] === text) {
+        if (values_.length === 2 && values_[1] === text) {
+          cell.value = values_[0];
+          break;
+        }
+        if (values_.length === 1 && values_[0] === text) {
           cell.value = values_[0];
           break;
         }

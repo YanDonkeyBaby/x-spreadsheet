@@ -59,7 +59,7 @@ export default class Validator {
     const result = [];
     for (let i = 0; i < content.length; i++) {
       const content_ = content[i].split(':');
-      if (content_.length > 0) {
+      if (content_.length > 1) {
         result.push(content_[1]);
       } else {
         result.push(content_[0]);
