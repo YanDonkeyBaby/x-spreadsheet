@@ -46,11 +46,11 @@ export default class ModalValidation extends Modal {
     ).hide();
     // min, max
     const minvf = new FormField(
-      new FormInput('70px', '101'),
+      new FormInput('90px', '10'),
       { required: true },
     ).hide();
     const maxvf = new FormField(
-      new FormInput('70px', '1001'),
+      new FormInput('90px', '100'),
       { required: true, type: 'number' },
     ).hide();
     // value
@@ -59,7 +59,7 @@ export default class ModalValidation extends Modal {
       { required: true },
     );
     const vf = new FormField(
-      new FormInput('70px', '10'),
+      new FormInput('90px', '10'),
       { required: true, type: 'number' },
     ).hide();
 
