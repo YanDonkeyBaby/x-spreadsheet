@@ -1,6 +1,7 @@
 import Modal from './modal';
 import FormInput from './form_input';
 import FormSelect from './form_select';
+import FormSelect2 from './form_select2';
 import FormField from './form_field';
 import Button from './button';
 import { t } from '../locale/locale';
@@ -10,7 +11,7 @@ import { cssPrefix } from '../config';
 const fieldLabelWidth = 100;
 
 export default class ModalRightMenu extends Modal {
-  constructor() {
+  constructor(zbbmData) {
     // 是否表头
     const headers = new FormField(
       new FormSelect('false',
@@ -23,7 +24,8 @@ export default class ModalRightMenu extends Modal {
     );
     // 指标编码
     const zbbm = new FormField(
-      new FormInput('150px', ''),
+      new FormSelect2('1', zbbmData,
+        '150px'),
       { required: false },
       `${t('rightMenu.zbbm')}:`,
       fieldLabelWidth,

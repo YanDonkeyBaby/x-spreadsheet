@@ -140,7 +140,7 @@ export default {
       true: '是',
       false: '否',
     },
-    zbbm: '指标编码',
+    zbbm: '指标描述',
     datasource: '数据源',
     tablename: '数据表',
     fieldname: '指标字段名',

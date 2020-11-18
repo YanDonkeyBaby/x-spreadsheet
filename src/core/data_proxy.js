@@ -16,59 +16,6 @@ import { expr2xy, xy2expr } from './alphabet';
 import { t } from '../locale/locale';
 
 // private methods
-/*
- * {
- *  name: ''
- *  freeze: [0, 0],
- *  formats: [],
- *  styles: [
- *    {
- *      bgcolor: '',
- *      align: '',
- *      valign: '',
- *      textwrap: false,
- *      strike: false,
- *      underline: false,
- *      color: '',
- *      format: 1,
- *      border: {
- *        left: [style, color],
- *        right: [style, color],
- *        top: [style, color],
- *        bottom: [style, color],
- *      },
- *      font: {
- *        name: 'Helvetica',
- *        size: 10,
- *        bold: false,
- *        italic: false,
- *      }
- *    }
- *  ],
- *  merges: [
- *    'A1:F11',
- *    ...
- *  ],
- *  rows: {
- *    1: {
- *      height: 50,
- *      style: 1,
- *      cells: {
- *        1: {
- *          style: 2,
- *          type: 'string',
- *          text: '',
- *          value: '', // cal result
- *        }
- *      }
- *    },
- *    ...
- *  },
- *  cols: {
- *    2: { width: 100, style: 1 }
- *  }
- * }
- */
 const defaultSettings = {
   mode: 'edit', // edit | read
   view: {
@@ -104,6 +51,7 @@ const defaultSettings = {
     },
     format: 'normal',
   },
+  zbbmData: {},
 };
 
 const toolbarHeight = 41;

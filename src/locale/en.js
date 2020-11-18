@@ -140,9 +140,9 @@ export default {
       true: 'true',
       false: 'false',
     },
-    zbbm: 'index code',
+    zbbm: 'index name',
     datasource: 'datasource',
-    tablename: 'tablename',
-    fieldname: 'fieldname',
+    tablename: 'table name',
+    fieldname: 'field name',
   },
 };

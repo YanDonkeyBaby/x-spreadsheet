@@ -882,7 +882,7 @@ export default class Sheet {
     // data validation
     this.modalValidation = new ModalValidation();
     // right menu
-    this.modalRightMenu = new ModalRightMenu();
+    this.modalRightMenu = new ModalRightMenu(data.settings.zbbmData);
     // contextMenu
     this.contextMenu = new ContextMenu(() => this.getRect(), !showContextmenu);
     // selector
