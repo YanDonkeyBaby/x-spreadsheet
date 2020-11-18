@@ -668,6 +668,8 @@ function sheetInitEvents() {
   modalRightMenu.change = (action, ...args) => {
     if (action === 'save') {
       this.data.addRightmenu(...args);
+    } else {
+      this.data.removeRightmenu();
     }
   };
   // contextmenu

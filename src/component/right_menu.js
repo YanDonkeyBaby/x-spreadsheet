@@ -71,6 +71,7 @@ export default class ModalRightMenu extends Modal {
       ),
       h('div', `${cssPrefix}-buttons`).children(
         new Button('cancel').on('click', () => this.btnClick('cancel')),
+        new Button('remove').on('click', () => this.btnClick('remove')),
         new Button('save', 'primary').on('click', () => this.btnClick('save')),
       ),
     ]);
@@ -84,6 +85,9 @@ export default class ModalRightMenu extends Modal {
 
   btnClick(action) {
     if (action === 'cancel') {
+      this.hide();
+    } else if (action === 'remove') {
+      this.change('remove');
       this.hide();
     } else if (action === 'save') {
       const headers = this.headers.val();

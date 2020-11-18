@@ -338,6 +338,18 @@ export default class DataProxy {
     });
   }
 
+  removeRightmenu() {
+    this.changeData(() => {
+      const { ri, ci } = this.selector;
+      for (let i = 0; i < this.rightMenus._.length; i++) {
+        const rec = this.rightMenus._[i];
+        if (rec.ri === ri && rec.ci === ci) {
+          this.rightMenus._.splice(i, 1);
+        }
+      }
+    });
+  }
+
   getSelectedRightMenu() {
     const { ri, ci } = this.selector;
     const v = this.rightMenus.get(ri, ci);
