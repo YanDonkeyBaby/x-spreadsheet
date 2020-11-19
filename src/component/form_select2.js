@@ -20,8 +20,8 @@ export default class FormSelect2 {
   }
 
   getTitle(key) {
-    let title = '';
-    for (let item of this.items) {
+    let title = '&nbsp;';
+    for (const item of this.items) {
       if (item.key.toString() === key.toString()) {
         title = item.title;
       }
