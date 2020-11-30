@@ -52,6 +52,7 @@ const defaultSettings = {
     format: 'normal',
   },
   zbbmData: {},
+  cellPro: {},
 };
 
 const toolbarHeight = 41;
@@ -353,7 +354,10 @@ export default class DataProxy {
   getSelectedRightMenu() {
     const { ri, ci } = this.selector;
     const v = this.rightMenus.get(ri, ci);
-    const ret = Object.assign({}, v);
+    let ret = null;
+    if (v) {
+      ret = Object.assign({}, v);
+    }
     return ret;
   }
 

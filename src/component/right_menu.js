@@ -11,7 +11,7 @@ import { cssPrefix } from '../config';
 const fieldLabelWidth = 100;
 
 export default class ModalRightMenu extends Modal {
-  constructor(zbbmData) {
+  constructor(zbbmData, cellPro) {
     // 是否表头
     const headers = new FormField(
       new FormSelect('false',
@@ -75,12 +75,15 @@ export default class ModalRightMenu extends Modal {
         new Button('save', 'primary').on('click', () => this.btnClick('save')),
       ),
     ]);
+
+
     this.headers = headers;
     this.zbbm = zbbm;
     this.datasource = datasource;
     this.table = table;
     this.field = field;
     this.change = () => {};
+    this.cellPro = cellPro;
   }
 
   btnClick(action) {
@@ -105,17 +108,28 @@ export default class ModalRightMenu extends Modal {
 
   // validation: { mode, ref, validator }
   setValue(v) {
+    const {
+      headers, zbbm, datasource, table, field, cellPro,
+    } = this;
     if (v) {
-      const {
-        headers, zbbm, datasource, table, field,
-      } = this;
       headers.val(v.headers || 'false');
       zbbm.val(v.zbbm || '');
       datasource.val(v.datasource || '');
       table.val(v.table || '');
       field.val(v.field || '');
+    } else if (this.cellPro) {
+      headers.val('false');
+      zbbm.val('');
+      datasource.val(cellPro.datasource || '');
+      table.val(cellPro.table || '');
+      field.val(cellPro.field || '');
+    } else {
+      headers.val('false');
+      zbbm.val('');
+      datasource.val('');
+      table.val('');
+      field.val('');
     }
-
     this.show();
   }
 }

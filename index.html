@@ -48,10 +48,11 @@
         }
       };
       // x_spreadsheet.locale('zh-cn');
-      var xs = x_spreadsheet('#x-spreadsheet-demo', {showToolbar: true, showGrid: true, zbbmData: [{ key: '1', title: '111' }, { key: '2', title: '222' }, { key: '3', title: '333' }]})
+      var xs = x_spreadsheet('#x-spreadsheet-demo', {showToolbar: true, showGrid: true, zbbmData: [{ key: '1', title: '111' }, { key: '2', title: '222' }, { key: '3', title: '333' }],cellPro:{datasource:'TPRI_VUE',table:'TESTTABLE',field:'testFiled'}})
         .loadData([{
           freeze: 'B3',
           styles: [
+
             {
               bgcolor: '#f4f5f8',
               textwrap: true,
