@@ -122,6 +122,8 @@ export default {
       date: 'Date',
       phone: 'Phone',
       email: 'Email',
+      jizu: 'jizu',
+      sb: 'shebei',
     },
     operator: {
       be: 'between',

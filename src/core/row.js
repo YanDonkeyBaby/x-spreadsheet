@@ -107,7 +107,7 @@ class Rows {
   setCellText(ri, ci, text) {
     const cell = this.getCellOrNew(ri, ci);
     cell.text = text;
-    if (cell.type === 'list') {
+    if (cell.type === 'list' || cell.type === 'jizu' || cell.type === 'sb') {
       const value = cell.values.toString();
       const values = value.split(',');
       for (let i = 0; i < values.length; i++) {
@@ -124,10 +124,17 @@ class Rows {
     }
   }
 
-  setListCell(ri, ci, validator) {
-    const cell = this.getCellOrNew(ri, ci);
-    cell.values = validator.value;
-    cell.type = 'list';
+  setListCell(range, validator) {
+    const {
+      sri, sci, eri, eci,
+    } = range;
+    for (let i = sri; i <= eri; i++) {
+      for (let j = sci; j <= eci; j++) {
+        const cell = this.getCellOrNew(i, j);
+        cell.values = validator.value;
+        cell.type = validator.type;
+      }
+    }
   }
 
   // what: all | format | text

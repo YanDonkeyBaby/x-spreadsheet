@@ -48,7 +48,12 @@
         }
       };
       // x_spreadsheet.locale('zh-cn');
-      var xs = x_spreadsheet('#x-spreadsheet-demo', {showToolbar: true, showGrid: true, zbbmData: [{ key: '1', title: '111' }, { key: '2', title: '222' }, { key: '3', title: '333' }],cellPro:{datasource:'TPRI_VUE',table:'TESTTABLE',field:'testFiled'}})
+      var xs = x_spreadsheet('#x-spreadsheet-demo', {showToolbar: true, showGrid: true,
+        zbbmData: [{ key: '1', title: '111' }, { key: '2', title: '222' }, { key: '3', title: '333' }],
+        cellPro:{datasource:'TPRI_VUE',table:'TESTTABLE',field:'testFiled'},
+        jizuData:'1:机组1,2:机组2,3:机组3,4:机组4',
+        sbData:'1:设备1,2:设备2,3:设备3,4:设备4',
+      })
         .loadData([{
           freeze: 'B3',
           styles: [

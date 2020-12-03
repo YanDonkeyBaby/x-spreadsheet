@@ -10,7 +10,7 @@ import { cssPrefix } from '../config';
 const fieldLabelWidth = 100;
 
 export default class ModalValidation extends Modal {
-  constructor() {
+  constructor(jizuData, sbData) {
     const mf = new FormField(
       new FormSelect('cell',
         ['cell'], // cell|row|column
@@ -26,7 +26,7 @@ export default class ModalValidation extends Modal {
     );
     const cf = new FormField(
       new FormSelect('list',
-        ['list', 'number', 'date', 'phone', 'email'],
+        ['list', 'number', 'date', 'phone', 'email', 'jizu', 'sb'],
         '70px',
         it => t(`dataValidation.type.${it}`),
         it => this.criteriaSelected(it)),
@@ -91,6 +91,8 @@ export default class ModalValidation extends Modal {
     this.vf = vf;
     this.svf = svf;
     this.change = () => {};
+    this.jizuData = jizuData;
+    this.sbData = sbData;
   }
 
   showVf(it) {
@@ -184,6 +186,12 @@ export default class ModalValidation extends Modal {
         } else {
           value = this.vf.val();
         }
+      }
+      if (type === 'jizu') {
+        value = this.jizuData;
+      }
+      if (type === 'sb') {
+        value = this.sbData;
       }
       // console.log(mode, ref, type, operator, value);
       this.change('save',

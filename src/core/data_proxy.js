@@ -53,6 +53,8 @@ const defaultSettings = {
   },
   zbbmData: {},
   cellPro: {},
+  jizuData: '',
+  sbData: '',
 };
 
 const toolbarHeight = 41;
@@ -303,14 +305,10 @@ export default class DataProxy {
   addValidation(mode, ref, validator) {
     // console.log('mode:', mode, ', ref:', ref, ', validator:', validator);
     this.changeData(() => {
-      const { ri, ci } = this.selector;
-      const isCz = this.validations.get(ri, ci);
-      if (isCz) {
-        const { range } = this.selector;
-        this.validations.remove(range);
-      }
+      const { range } = this.selector;
+      this.validations.remove(range);
       this.validations.add(mode, ref, validator);
-      this.rows.setListCell(ri, ci, validator);
+      this.rows.setListCell(range, validator);
     });
   }
 

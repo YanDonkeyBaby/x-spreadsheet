@@ -122,6 +122,8 @@ export default {
       date: '日期',
       phone: '手机号',
       email: '电子邮件',
+      jizu: '机组',
+      sb: '设备',
     },
     operator: {
       be: '在区间',
