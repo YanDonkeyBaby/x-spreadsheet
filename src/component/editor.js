@@ -64,7 +64,7 @@ function inputEventHandler(evt) {
     if (('editable' in cell && cell.editable === true) || (cell.editable === undefined)) {
       this.inputText = v;
       if (validator) {
-        if (validator.type === 'list' || validator.type === 'jizu' || validator.type === 'sb') {
+        if (validator.type === 'list' || validator.type === 'jizu') {
           suggest.search(v);
         } else {
           suggest.hide();
@@ -86,7 +86,7 @@ function inputEventHandler(evt) {
   } else {
     this.inputText = v;
     if (validator) {
-      if (validator.type === 'list' || validator.type === 'jizu' || validator.type === 'sb') {
+      if (validator.type === 'list' || validator.type === 'jizu') {
         suggest.search(v);
       } else {
         suggest.hide();
@@ -126,7 +126,7 @@ function setText(text, position) {
 function suggestItemClick(it) {
   const { inputText, validator } = this;
   let position = 0;
-  if (validator && (validator.type === 'list' || validator.type === 'jizu' || validator.type === 'sb')) {
+  if (validator && (validator.type === 'list' || validator.type === 'jizu')) {
     this.inputText = it;
     position = this.inputText.length;
   } else {
@@ -265,7 +265,7 @@ export default class Editor {
           datepicker.setValue(text);
         }
       }
-      if (type === 'list' || type === 'jizu' || type === 'sb') {
+      if (type === 'list' || type === 'jizu') {
         suggest.setItems(validator.valuesName());
         suggest.search('');
       }

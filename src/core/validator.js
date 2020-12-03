@@ -79,8 +79,11 @@ export default class Validator {
     if (rules[type] && !rules[type].test(v)) {
       return returnMessage(false, 'notMatch');
     }
-    if (type === 'list' || type === 'jizu' || type === 'sb') {
+    if (type === 'list' || type === 'jizu') {
       return returnMessage(this.valuesName().includes(v), 'notIn');
+    }
+    if (type === 'sb') {
+      return returnMessage(true, '');
     }
     if (operator) {
       const v1 = this.parseValue(v);

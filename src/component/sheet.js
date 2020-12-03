@@ -882,7 +882,7 @@ export default class Sheet {
       data.rows.height,
     );
     // data validation
-    this.modalValidation = new ModalValidation(data.settings.jizuData, data.settings.sbData);
+    this.modalValidation = new ModalValidation(data.settings.jizuData);
     // right menu
     this.modalRightMenu = new ModalRightMenu(data.settings.zbbmData, data.settings.cellPro);
     // contextMenu

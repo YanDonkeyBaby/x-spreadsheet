@@ -107,7 +107,7 @@ class Rows {
   setCellText(ri, ci, text) {
     const cell = this.getCellOrNew(ri, ci);
     cell.text = text;
-    if (cell.type === 'list' || cell.type === 'jizu' || cell.type === 'sb') {
+    if (cell.type === 'list' || cell.type === 'jizu') {
       const value = cell.values.toString();
       const values = value.split(',');
       for (let i = 0; i < values.length; i++) {
@@ -131,7 +131,9 @@ class Rows {
     for (let i = sri; i <= eri; i++) {
       for (let j = sci; j <= eci; j++) {
         const cell = this.getCellOrNew(i, j);
-        cell.values = validator.value;
+        if (validator.value) {
+          cell.values = validator.value;
+        }
         cell.type = validator.type;
       }
     }
@@ -327,8 +329,8 @@ class Rows {
         } else if (what === 'text') {
           if (cell.text) delete cell.text;
           if (cell.value) delete cell.value;
-          // if (cell.values) delete cell.values;
-          // if (cell.type) delete cell.type;
+          if (cell.values) delete cell.values;
+          if (cell.type) delete cell.type;
         } else if (what === 'format') {
           if (cell.style !== undefined) delete cell.style;
           if (cell.merge) delete cell.merge;

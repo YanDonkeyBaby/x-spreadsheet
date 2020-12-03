@@ -54,7 +54,6 @@ const defaultSettings = {
   zbbmData: {},
   cellPro: {},
   jizuData: '',
-  sbData: '',
 };
 
 const toolbarHeight = 41;
@@ -316,6 +315,7 @@ export default class DataProxy {
     const { range } = this.selector;
     this.changeData(() => {
       this.validations.remove(range);
+      this.rows.deleteCells(range, 'text');
     });
   }
 
