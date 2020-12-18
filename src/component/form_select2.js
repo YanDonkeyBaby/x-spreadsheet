@@ -12,7 +12,7 @@ export default class FormSelect2 {
       this.itemClick(it.key);
       change(it.key);
       this.vchange(it.key);
-    }, width, this.el);
+    }, width, '170px', this.el);
     this.el.children(
       this.itemEl = h('div', 'input-text').html(this.getTitle(key)).css('width', width),
       this.suggest.el,

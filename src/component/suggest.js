@@ -68,10 +68,10 @@ function inputKeydownHandler(evt) {
 }
 
 export default class Suggest {
-  constructor(items, itemClick, width = '200px') {
+  constructor(items, itemClick, width = '200px', height = '200px') {
     this.filterItems = [];
     this.items = items;
-    this.el = h('div', `${cssPrefix}-suggest`).css('width', width).hide();
+    this.el = h('div', `${cssPrefix}-suggest`).css('width', width).css('height', height).hide();
     this.itemClick = itemClick;
     this.itemIndex = -1;
   }
