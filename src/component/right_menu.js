@@ -16,7 +16,7 @@ export default class ModalRightMenu extends Modal {
     const headers = new FormField(
       new FormSelect('false',
         ['false', 'true'],
-        '150px',
+        '250px',
         it => t(`rightMenu.headersType.${it}`)),
       { required: true },
       `${t('rightMenu.headers')}:`,
@@ -25,21 +25,21 @@ export default class ModalRightMenu extends Modal {
     // 指标编码
     const zbbm = new FormField(
       new FormSelect2('1', zbbmData,
-        '150px'),
+        '250px'),
       { required: false },
       `${t('rightMenu.zbbm')}:`,
       fieldLabelWidth,
     );
     // 数据源
     const datasource = new FormField(
-      new FormInput('150px', ''),
+      new FormInput('250px', ''),
       { required: false },
       `${t('rightMenu.datasource')}:`,
       fieldLabelWidth,
     );
     // 表
     const table = new FormField(
-      new FormInput('150px', ''),
+      new FormInput('250px', ''),
       { required: false },
       `${t('rightMenu.tablename')}:`,
       fieldLabelWidth,
@@ -47,7 +47,7 @@ export default class ModalRightMenu extends Modal {
 
     // 字段
     const field = new FormField(
-      new FormInput('150px', ''),
+      new FormInput('250px', ''),
       { required: false },
       `${t('rightMenu.fieldname')}:`,
       fieldLabelWidth,
