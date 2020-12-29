@@ -174,20 +174,27 @@ export default class ModalRightMenu extends Modal {
     const {
       headers, zbbm, datasource, table, field, cellPro, jzOrSb, jizu, shebei,
     } = this;
+    let jzOrSbValue = '';
+    if (v && v.jzOrSb) {
+      jzOrSbValue = v.jzOrSb;
+    }
+    if (jzOrSbValue === 'jz') {
+      jizu.show();
+      shebei.hide();
+    } else if (jzOrSbValue === 'sb') {
+      shebei.show();
+      jizu.hide();
+    } else {
+      jizu.hide();
+      shebei.hide();
+    }
     if (v) {
       headers.val(v.headers || 'false');
       zbbm.val(v.zbbm || '');
       datasource.val(v.datasource || '');
       table.val(v.table || '');
       field.val(v.field || '');
-      jzOrSb.val(v.jzOrSb || '');
-      if (v.jzOrSb === 'jz') {
-        jizu.show();
-        shebei.hide();
-      } else if (v.jzOrSb === 'sb') {
-        shebei.show();
-        jizu.hide();
-      }
+      jzOrSb.val(v.jzOrSb || 'no');
       jizu.val(v.jizu || '');
       shebei.val(v.shebei || '');
     } else if (this.cellPro) {
