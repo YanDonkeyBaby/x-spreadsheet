@@ -146,7 +146,7 @@ export default {
     jzName: 'unit name',
     sbName: 'equipment name',
     jzOrSbType: {
-      no: '  ',
+      no: ' ',
       jz: 'unit',
       sb: 'equipment',
     },
