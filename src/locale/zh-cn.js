@@ -146,7 +146,7 @@ export default {
     jzName: '机组名称',
     sbName: '设备名称',
     jzOrSbType: {
-      no: '  ',
+      no: ' ',
       jz: '机组',
       sb: '设备',
     },
