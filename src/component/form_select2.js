@@ -7,20 +7,21 @@ export default class FormSelect2 {
     this.key = key;
     this.items = items;
     this.vchange = () => {};
-    this.el = h('div', `${cssPrefix}-form-select`);
+    this.el = h('div', `${cssPrefix}-form-select2`);
     this.suggest = new Suggest(items, (it) => {
       this.itemClick(it.key);
       change(it.key);
       this.vchange(it.key);
     }, width, '170px', this.el);
     this.el.children(
-      this.itemEl = h('div', 'input-text').html(this.getTitle(key)).css('width', width),
+      this.itemEl = h('input', 'input-text').html(this.getTitle(key)).css('width', width)
+        .on('input', e => this.show(e.target.value)),
       this.suggest.el,
-    ).on('click', () => this.show());
+    ).on('click', () => this.show(this.itemEl.val()));
   }
 
   getTitle(key) {
-    let title = '&nbsp;';
+    let title = '';
     for (const item of this.items) {
       if (item.key.toString() === key.toString()) {
         title = item.title;
@@ -29,19 +30,19 @@ export default class FormSelect2 {
     return title;
   }
 
-  show() {
-    this.suggest.search('');
+  show(word) {
+    this.suggest.search(word);
   }
 
   itemClick(it) {
     this.key = it;
-    this.itemEl.html(this.getTitle(it));
+    this.itemEl.val(this.getTitle(it));
   }
 
   val(v) {
     if (v !== undefined) {
       this.key = v;
-      this.itemEl.html(this.getTitle(v));
+      this.itemEl.val(this.getTitle(v));
       return this;
     }
     return this.key;

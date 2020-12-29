@@ -49,7 +49,8 @@
       };
       // x_spreadsheet.locale('zh-cn');
       var xs = x_spreadsheet('#x-spreadsheet-demo', {showToolbar: true, showGrid: true,
-        zbbmData: [{ key: '1', title: '111' },
+        zbbmData: [
+          { key: '1', title: '111' },
           { key: '2', title: '222' },
           { key: '3', title: '333' },
           { key: '4', title: '444' },
@@ -58,9 +59,11 @@
           { key: '7', title: '777' },
           { key: '8', title: '888' },
           { key: '9', title: '999' },
-          { key: '10', title: '1010' }],
+          { key: '10', title: '1010' }
+        ],
         cellPro:{datasource:'TPRI_VUE',table:'TESTTABLE',field:'testFiled'},
         jizuData:'1:机组1,2:机组2,3:机组3,4:机组4',
+        sbData:'11:设备1,22:设备2,33:设备3,44:设备4',
       })
         .loadData([{
           freeze: 'B3',
@@ -120,7 +123,6 @@
           // console.log(cdata);
           console.log('>>>', xs.getData());
         });
-
       xs.on('cell-selected', (cell, ri, ci) => {
           // console.log('cell:', cell, ', ri:', ri, ', ci:', ci);
           if(cell && cell.type ==='sb'){

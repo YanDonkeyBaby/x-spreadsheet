@@ -97,7 +97,7 @@ export default class Suggest {
   search(word) {
     let { items } = this;
     if (!/^\s*$/.test(word)) {
-      items = items.filter(it => (it.key || it).startsWith(word.toUpperCase()));
+      items = items.filter(it => (it.title || it).startsWith(word.toUpperCase()));
     }
     items = items.map((it) => {
       let { title } = it;
@@ -120,11 +120,11 @@ export default class Suggest {
       return item;
     });
     this.filterItems = items;
+    const { el } = this;
     if (items.length <= 0) {
+      el.html('').show();
       return;
     }
-    const { el } = this;
-    // items[0].toggle();
     el.html('').children(...items).show();
     bindClickoutside(el.parent(), () => { this.hide(); });
   }
