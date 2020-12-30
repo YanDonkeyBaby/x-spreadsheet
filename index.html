@@ -63,7 +63,12 @@
         ],
         cellPro:{datasource:'TPRI_VUE',table:'TESTTABLE',field:'testFiled'},
         jizuData:'1:机组1,2:机组2,3:机组3,4:机组4',
-        sbData:'11:设备1,22:设备2,33:设备3,44:设备4',
+        sbData:[
+          { key: '11', title: '设备1' },
+          { key: '22', title: '设备2' },
+          { key: '33', title: '设备3' },
+          { key: '44', title: '设备4' }
+        ]
       })
         .loadData([{
           freeze: 'B3',

@@ -11,7 +11,7 @@ import { cssPrefix } from '../config';
 const fieldLabelWidth = 100;
 
 export default class ModalRightMenu extends Modal {
-  constructor(zbbmData, cellPro, jizuData, shebeiData) {
+  constructor(zbbmData, cellPro, jizuData, sbData) {
     // 组织机组数据
     const jzData = [];
     if (jizuData.length > 0) {
@@ -23,7 +23,7 @@ export default class ModalRightMenu extends Modal {
       }
     }
 
-    // 组织设备数据
+   /* // 组织设备数据
     const sbData = [];
     if (shebeiData.length > 0) {
       const sbsStr = shebeiData.split(',');
@@ -32,7 +32,7 @@ export default class ModalRightMenu extends Modal {
         const sbObj = { key: sb[0], title: sb[1] };
         sbData.push(sbObj);
       }
-    }
+    }*/
 
     // 是否表头
     const headers = new FormField(
