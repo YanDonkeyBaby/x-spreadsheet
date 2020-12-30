@@ -321,18 +321,22 @@ export default class DataProxy {
 
   addRightmenu(...args) {
     this.changeData(() => {
-      const { ri, ci } = this.selector;
-      const values = Object.assign({ ri, ci }, ...args);
-      let isCz = false;
-      for (let i = 0; i < this.rightMenus._.length; i++) {
-        const rec = this.rightMenus._[i];
-        if (rec.ri === ri && rec.ci === ci) {
-          this.rightMenus._.splice(i, 1, values);
-          isCz = true;
+      const {sri, sci, eri, eci} = this.selector.range;
+      for (let ri = sri; ri <= eri; ri += 1) {
+        for (let ci = sci; ci <= eci; ci += 1) {
+          const values = Object.assign({ ri, ci }, ...args);
+          let isCz = false;
+          for (let i = 0; i < this.rightMenus._.length; i++) {
+            const rec = this.rightMenus._[i];
+            if (rec.ri === ri && rec.ci === ci) {
+              this.rightMenus._.splice(i, 1, values);
+              isCz = true;
+            }
+          }
+          if (!isCz) {
+            this.rightMenus.add(values);
+          }
         }
-      }
-      if (!isCz) {
-        this.rightMenus.add(values);
       }
     });
   }
