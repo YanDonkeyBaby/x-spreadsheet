@@ -23,7 +23,7 @@ export default class ModalRightMenu extends Modal {
       }
     }
 
-   /* // 组织设备数据
+    /* // 组织设备数据
     const sbData = [];
     if (shebeiData.length > 0) {
       const sbsStr = shebeiData.split(',');
@@ -32,13 +32,13 @@ export default class ModalRightMenu extends Modal {
         const sbObj = { key: sb[0], title: sb[1] };
         sbData.push(sbObj);
       }
-    }*/
+    } */
 
     // 是否表头
     const headers = new FormField(
       new FormSelect('false',
         ['false', 'true'],
-        '300px',
+        '440px',
         it => t(`rightMenu.headersType.${it}`)),
       { required: true },
       `${t('rightMenu.headers')}:`,
@@ -58,7 +58,7 @@ export default class ModalRightMenu extends Modal {
     // 机组内容
     const jizu = new FormField(
       new FormSelect2('', jzData,
-        '100px'),
+        '240px'),
       { required: true },
       `${t('rightMenu.jzName')}:`,
       80,
@@ -67,7 +67,7 @@ export default class ModalRightMenu extends Modal {
     // 设备内容
     const shebei = new FormField(
       new FormSelect2('', sbData,
-        '100px'),
+        '240px'),
       { required: true },
       `${t('rightMenu.sbName')}:`,
       80,
@@ -76,21 +76,21 @@ export default class ModalRightMenu extends Modal {
     // 指标编码
     const zbbm = new FormField(
       new FormSelect2('1', zbbmData,
-        '300px'),
+        '440px'),
       { required: false },
       `${t('rightMenu.zbbm')}:`,
       fieldLabelWidth,
     );
     // 数据源
     const datasource = new FormField(
-      new FormInput('300px', ''),
+      new FormInput('440px', ''),
       { required: false },
       `${t('rightMenu.datasource')}:`,
       fieldLabelWidth,
     );
     // 表
     const table = new FormField(
-      new FormInput('300px', ''),
+      new FormInput('440px', ''),
       { required: false },
       `${t('rightMenu.tablename')}:`,
       fieldLabelWidth,
@@ -98,7 +98,7 @@ export default class ModalRightMenu extends Modal {
 
     // 字段
     const field = new FormField(
-      new FormInput('300px', ''),
+      new FormInput('440px', ''),
       { required: false },
       `${t('rightMenu.fieldname')}:`,
       fieldLabelWidth,
