@@ -70,7 +70,8 @@ function inputKeydownHandler(evt) {
 export default class Suggest {
   constructor(items, itemClick, width = '200px', height = '200px') {
     this.filterItems = [];
-    this.items = items;
+    this.itemsAll = items;
+    this.items = items.slice(0, 1000);
     this.el = h('div', `${cssPrefix}-suggest`).css('width', width).css('max-height', height).hide();
     this.itemClick = itemClick;
     this.itemIndex = -1;
@@ -95,9 +96,12 @@ export default class Suggest {
   }
 
   search(word) {
-    let { items } = this;
+    let { items, itemsAll } = this;
+    if (itemsAll.length > 1000 && word) {
+      items = itemsAll;
+    }
     if (!/^\s*$/.test(word)) {
-      items = items.filter(it => (it.title || it).startsWith(word.toUpperCase()));
+      items = items.filter(it => (it.title || it).includes(word.toUpperCase()));
     }
     items = items.map((it) => {
       let { title } = it;
@@ -119,7 +123,7 @@ export default class Suggest {
       }
       return item;
     });
-    this.filterItems = items;
+    this.filterItems = items.slice(0, 1000);
     const { el } = this;
     if (items.length <= 0) {
       el.html('').show();
