@@ -6,7 +6,7 @@ import Bottombar from './component/bottombar';
 import { cssPrefix } from './config';
 import { locale } from './locale/locale';
 import './index.less';
-
+import _ from 'lodash';
 
 class Spreadsheet {
   constructor(selectors, options = {}) {
@@ -27,6 +27,9 @@ class Spreadsheet {
       this.deleteSheet();
     }, (index, value) => {
       this.datas[index].name = value;
+    }, () => {
+      const d = this.copySheet();
+      this.sheet.resetData(d);
     });
     this.data = this.addSheet();
     const rootEl = h('div', `${cssPrefix}`)
@@ -48,6 +51,21 @@ class Spreadsheet {
     this.bottombar.addItem(n, active);
     this.sheetIndex += 1;
     return d;
+  }
+
+  copySheet(name, active = true) {
+    const { activeEl } = this.bottombar;
+    const index = this.bottombar.items.findIndex(it => it === activeEl);
+    const copyData = _.cloneDeep(this.datas[index]);
+    const n = name || `sheet${this.sheetIndex}`;
+    copyData.change = (...args) => {
+      this.sheet.trigger('change', ...args);
+    };
+    copyData.name = n;
+    this.datas.push(copyData);
+    this.bottombar.addItem(n, active);
+    this.sheetIndex += 1;
+    return copyData;
   }
 
   deleteSheet() {

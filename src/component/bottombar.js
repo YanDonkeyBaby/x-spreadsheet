@@ -73,9 +73,11 @@ export default class Bottombar {
   constructor(addFunc = () => {},
     swapFunc = () => {},
     deleteFunc = () => {},
-    updateFunc = () => {}) {
+    updateFunc = () => {},
+    copyFunc = () => {}) {
     this.swapFunc = swapFunc;
     this.updateFunc = updateFunc;
+    this.copyFunc = copyFunc;
     this.dataNames = [];
     this.activeEl = null;
     this.deleteEl = null;
@@ -92,6 +94,13 @@ export default class Bottombar {
           new Icon('add').on('click', () => {
             if (this.dataNames.length < 10) {
               addFunc();
+            } else {
+              xtoast('tip', 'it less than or equal to 10');
+            }
+          }),
+          new Icon('paintformat').on('click', () => {
+            if (this.dataNames.length < 10) {
+              copyFunc();
             } else {
               xtoast('tip', 'it less than or equal to 10');
             }

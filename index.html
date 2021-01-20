@@ -41,6 +41,12 @@
             2: { text: 'haha', merge: [1, 1] },
           }
         },
+        5: {
+          cells: {
+            2: {values: "1:机组1,2:机组2,3:机组3,4:机组4", type: "jizu", text: "机组2", value: "2"},
+            3: {values: "1:机组1,2:机组2,3:机组3,4:机组4", type: "jizu", text: "机组3", value: "3"},
+          }
+        },
         8: {
           cells: {
             8: { text: 'border test', style: 0 },
@@ -77,7 +83,6 @@
         .loadData([{
           freeze: 'B3',
           styles: [
-
             {
               bgcolor: '#f4f5f8',
               textwrap: true,
@@ -113,16 +118,24 @@
               zbbm: "44",
             },
           ],
-          /*validations: [
+          validations: [
             {
               mode: "cell",
               operator: "be",
-              refs: ["A4"],
+              refs: ["C6"],
               required: false,
-              type: "list",
-              value: "1:11,2:22,3:33"
-            }
-          ],*/
+              type: "jizu",
+              value: "1:机组1,2:机组2,3:机组3,4:机组4"
+            },
+            {
+              mode: "cell",
+              operator: "be",
+              refs: ["D6"],
+              required: false,
+              type: "jizu",
+              value: "1:机组1,2:机组2,3:机组3,4:机组4"
+            },
+          ],
           cols: {
             len: 10,
             2: { width: 200 },
